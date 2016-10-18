@@ -24,3 +24,31 @@ devtools::install_github("hadley/fueleconomy")
 
 # Write 3 functions, one for each approach.  Then, 
 # Test how long it takes to perform each one 1000 times
+
+
+library("dplyr")
+
+library('devtools')
+
+library("fueleconomy")
+
+as.data.frame('vehicles')
+
+acura<-filter(vehicles, make %in% c("Acura"))
+
+acurampg<-filter(acura,max(hwy)==hwy)
+
+bestacura<-select(acurampg,model)
+
+unique(bestacura$model)
+
+
+(select((filter((filter(vehicles, make %in% c("Acura"))),max(hwy)==hwy)),model))
+
+       
+filter(vehicles, make %in% c("Acura")) %>%
+
+filter(max(hwy)==hwy) %>%
+
+select(model) %>%
+  unique()
